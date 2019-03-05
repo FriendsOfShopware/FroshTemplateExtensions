@@ -216,7 +216,7 @@ class CachedBundleMediaService implements MediaServiceInterface
      */
     public function migrateFile($path)
     {
-        return $this->migrateFile($path);
+        return $this->mediaService->migrateFile($path);
     }
 
     /**
