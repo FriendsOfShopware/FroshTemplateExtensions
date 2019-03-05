@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="FroshTemplateExtensions\Extensions\Thumbnail\Extension" class="FroshTemplateExtensions\Extensions\Thumbnail\Extension">
+            <argument type="service" id="FroshTemplateExtensions\Extensions\Thumbnail\ThumbnailService"/>
+            <tag name="frosh.smarty_plugin"/>
+        </service>
+
+        <service id="FroshTemplateExtensions\Extensions\Thumbnail\ThumbnailService" class="FroshTemplateExtensions\Extensions\Thumbnail\ThumbnailService">
+            <argument type="service" id="shopware_storefront.media_service"/>
+            <argument type="service" id="shopware_storefront.context_service"/>
+            <argument type="service" id="FroshTemplateExtensions\Extensions\Thumbnail\Caching\CachedBundleMediaService"/>
+            <argument type="service" id="thumbnail_generator_basic"/>
+        </service>
+
+        <!-- Caching -->
+
+        <service id="FroshTemplateExtensions\Extensions\Thumbnail\Caching\CachedBundleMediaService" class="FroshTemplateExtensions\Extensions\Thumbnail\Caching\CachedBundleMediaService">
+            <argument type="service" id="shopware_media.media_service"/>
+            <argument type="service" id="cache"/>
+        </service>
+    </services>
+</container>
