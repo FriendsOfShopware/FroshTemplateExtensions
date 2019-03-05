@@ -10,7 +10,7 @@
         </service>
 
         <service id="FroshTemplateExtensions\Extensions\Thumbnail\ThumbnailService" class="FroshTemplateExtensions\Extensions\Thumbnail\ThumbnailService">
-            <argument type="service" id="shopware_storefront.media_service"/>
+            <argument type="service" id="FroshTemplateExtensions\Extensions\Thumbnail\Caching\CachedStorefrontMediaService"/>
             <argument type="service" id="shopware_storefront.context_service"/>
             <argument type="service" id="FroshTemplateExtensions\Extensions\Thumbnail\Caching\CachedBundleMediaService"/>
             <argument type="service" id="thumbnail_generator_basic"/>
@@ -20,6 +20,11 @@
 
         <service id="FroshTemplateExtensions\Extensions\Thumbnail\Caching\CachedBundleMediaService" class="FroshTemplateExtensions\Extensions\Thumbnail\Caching\CachedBundleMediaService">
             <argument type="service" id="shopware_media.media_service"/>
+            <argument type="service" id="cache"/>
+        </service>
+
+        <service id="FroshTemplateExtensions\Extensions\Thumbnail\Caching\CachedStorefrontMediaService" class="FroshTemplateExtensions\Extensions\Thumbnail\Caching\CachedStorefrontMediaService">
+            <argument type="service" id="shopware_storefront.media_service"/>
             <argument type="service" id="cache"/>
         </service>
     </services>

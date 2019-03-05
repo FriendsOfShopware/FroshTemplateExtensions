@@ -5,9 +5,9 @@ namespace FroshTemplateExtensions\Extensions\Thumbnail;
 
 use Shopware\Bundle\StoreFrontBundle\Service\ContextServiceInterface;
 use Shopware\Bundle\StoreFrontBundle\Service\MediaServiceInterface;
-use Shopware\Components\Thumbnail\Generator\Basic;
+use Shopware\Components\Thumbnail\Generator\GeneratorInterface;
 
-class ThumbnailService
+class ThumbnailService implements ThumbnailServiceInterface
 {
     /**
      * @var MediaServiceInterface
@@ -25,7 +25,7 @@ class ThumbnailService
     private $mediaService;
 
     /**
-     * @var Basic
+     * @var GeneratorInterface
      */
     private $basic;
 
@@ -33,7 +33,7 @@ class ThumbnailService
         MediaServiceInterface $storeFrontMediaService,
         ContextServiceInterface $contextService,
         \Shopware\Bundle\MediaBundle\MediaServiceInterface $mediaService,
-        Basic $basic
+        GeneratorInterface $basic
     ) {
         $this->storeFrontMediaService = $storeFrontMediaService;
         $this->contextService = $contextService;
