@@ -42,5 +42,6 @@ class FroshTemplateExtensions extends Plugin
         );
 
         $loader->load($this->getPath() . '/Extensions/Thumbnail/services.xml');
+        $loader->load($this->getPath() . '/Extensions/Fetch/services.xml');
     }
 }
