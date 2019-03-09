@@ -124,6 +124,12 @@ class FetchService implements FetchServiceInterface
 
         if (isset($arguments['where'])) {
             foreach ($arguments['where'] as $column => $value) {
+                if (is_null($value)) {
+                    $qb->andWhere($column);
+
+                    continue;
+                }
+
                 $type = is_array($value) ? Connection::PARAM_STR_ARRAY : \PDO::PARAM_STR;
                 $qb->andWhere(
                     sprintf(
