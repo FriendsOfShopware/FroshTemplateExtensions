@@ -124,11 +124,12 @@ class FetchService implements FetchServiceInterface
 
         if (isset($arguments['where'])) {
             foreach ($arguments['where'] as $column => $value) {
+                $type = is_array($value) ? Connection::PARAM_STR_ARRAY : \PDO::PARAM_STR;
                 $qb->andWhere(
                     sprintf(
-                        '%s %s',
+                        is_array($value) ? '%s (%s)' : '%s %s',
                         $column,
-                        $qb->createNamedParameter($value)
+                        $qb->createNamedParameter($value, $type)
                     )
                 );
             }
