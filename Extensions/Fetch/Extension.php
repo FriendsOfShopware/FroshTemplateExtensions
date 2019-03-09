@@ -59,7 +59,7 @@ class Extension extends AbstractSmartyExtension
 
         $this->checkParams($params);
 
-        if (isset($params['var']) && !is_string($params['var'])) {
+        if (!isset($params['var']) || !is_string($params['var'])) {
             throw new \RuntimeException('Var parameter missing or must be of type string');
         }
 
