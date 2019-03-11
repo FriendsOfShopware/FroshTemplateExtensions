@@ -34,6 +34,8 @@ class FroshTemplateExtensions extends Plugin
 {
     public function build(ContainerBuilder $container)
     {
+        parent::build($container);
+
         $container->addCompilerPass(new CustomTemplateFactory());
 
         $loader = new XmlFileLoader(
@@ -42,5 +44,6 @@ class FroshTemplateExtensions extends Plugin
         );
 
         $loader->load($this->getPath() . '/Extensions/Thumbnail/services.xml');
+        $loader->load($this->getPath() . '/Extensions/Fetch/services.xml');
     }
 }
