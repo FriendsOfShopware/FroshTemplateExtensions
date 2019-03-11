@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../engine/Shopware/Components/Plugin/schema/config.xsd">
+    <elements>
+        <element type="boolean">
+            <name>fetch_functions_active</name>
+            <label lang="de">Fetch Funktionen sind aktiv</label>
+            <label lang="en">Fetch functions are active</label>
+            <value>false</value>
+            <description lang="de">
+                <![CDATA[
+                    Stelle bitte vor der Aktivierung der Fetch Funktionen sicher, dass durch Anpassungen in deinem Theme
+                    keine ungefilterten Nutzereingaben als Smarty kompiliert werden können.
+                ]]>
+            </description>
+            <description lang="en">
+                <![CDATA[
+                    Before activating the fetch functions, please make sure, that none of your changes to your theme allow
+                    for unsanitized user inputs to be compiled as smarty.
+                ]]>
+            </description>
+        </element>
+    </elements>
+</config>

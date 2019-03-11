@@ -56,7 +56,7 @@ Examples
 {* Fetches the price of the last article added to basket of the current user *}
 {fetchOne select="price" from="s_order_basket" where=["modus =" => 0, "sessionID =" => $smarty.session.Shopware.sessionId] order=["id" => "DESC"]}
 
-{* Fetches the name and description of the 5th to 15th article *}
+{* Fetches the 5th to 15th row of s_articles *}
 {fetchAll var="articles" from="s_articles" offset=5 limit=10}
 {foreach $articles as $article}
     Article: {$article.name} - {$article.description}<br>
@@ -66,6 +66,10 @@ Examples
 {fetchRow var="order" select=["ordernumber", "id"] from="s_order" where=["status !=" => -1] order=["ordertime" => "DESC"]}
 {$order.id} - {$order.ordernumber}
 ```
+
+*Please note:* The fetch functions need to be actived through the configuration of the plugin. They are disabled by default. 
+Before activating the fetch functions, please make sure, that none of your changes to your theme allow for unsanitized user 
+inputs to be compiled as smarty.
 
 ## Requirements
 

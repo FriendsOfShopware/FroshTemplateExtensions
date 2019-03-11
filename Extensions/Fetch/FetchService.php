@@ -14,15 +14,23 @@ class FetchService implements FetchServiceInterface
     /**
      * @var array
      */
+    private $pluginConfig;
+
+    /**
+     * @var array
+     */
     private $_cache = [];
 
     /**
      * @param Connection $connection
+     * @param array      $pluginConfig
      */
     public function __construct(
-        Connection $connection
+        Connection $connection,
+        $pluginConfig
     ) {
         $this->connection = $connection;
+        $this->pluginConfig = $pluginConfig;
     }
 
     /**
@@ -32,6 +40,10 @@ class FetchService implements FetchServiceInterface
      */
     public function fetchOne($arguments)
     {
+        if (!$this->pluginConfig['fetch_functions_active']) {
+            return null;
+        }
+
         return $this->fetch(
             $arguments,
             'fetch',
@@ -46,6 +58,10 @@ class FetchService implements FetchServiceInterface
      */
     public function fetchRow($arguments)
     {
+        if (!$this->pluginConfig['fetch_functions_active']) {
+            return null;
+        }
+
         return $this->fetch(
             $arguments,
             'fetch',
@@ -60,6 +76,10 @@ class FetchService implements FetchServiceInterface
      */
     public function fetchAll($arguments)
     {
+        if (!$this->pluginConfig['fetch_functions_active']) {
+            return null;
+        }
+
         return $this->fetch(
             $arguments,
             'fetchAll',

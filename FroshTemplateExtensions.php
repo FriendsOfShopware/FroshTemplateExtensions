@@ -34,6 +34,8 @@ class FroshTemplateExtensions extends Plugin
 {
     public function build(ContainerBuilder $container)
     {
+        parent::build($container);
+
         $container->addCompilerPass(new CustomTemplateFactory());
 
         $loader = new XmlFileLoader(
